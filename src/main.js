@@ -10,20 +10,24 @@ const vm = new Vue({
   //不用render渲染的方法
   components:{Demo},
   data:{
-    visible:true
+    visible:true,
+    n:0
   },
   template:`
       <div>
-        <button @click="toggle">toggle</button>
-        <hr>
-        <Demo v-if="visible === true" />
+        {{n}}
+        <Demo :message="n" :fn="add" />
       </div>
   `,
   methods:{
+    add(){
+      this.n+=1
+    },
     toggle(){
       this.visible=!this.visible
     }
   }
+
   // render: h => h(Demo)
 })
 vm.$mount('#frank')
